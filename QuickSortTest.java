@@ -1,3 +1,9 @@
+/**
+ * FILE: QuickSort.java
+ * DESCRIPTION: File contains the QuickSortTest class
+ * AUTHOR: Madilyn Simons
+**/
+
 import java.util.*;
 
 public class QuickSortTest{
@@ -16,7 +22,10 @@ public class QuickSortTest{
     System.out.println("Done!");
     System.out.println(qcount+" qcount");
   }
-
+  
+  /**
+   * Sorts array data using the quicksort algorithm
+  **/
   public static void quicksort (int[] data, int i, int j){
 
     int p; int low = i; int high = j;

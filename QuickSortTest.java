@@ -20,17 +20,19 @@ public class QuickSortTest{
   public static void quicksort (int[] data, int i, int j){
     int p; int low = i; int high = j;
     p = (high-low)/2 + low;
-    while(data[low] < data[p]) low++;
-    while(data[high]>data[p]) high--;
-    if(low < high)
-    {
-      qcount++;
-      int temp = data[high];
-      data[high] = data[low];
-      data[low] = temp;
-      quicksort (data,i,p);
-      quicksort (data,p,j);
+    while(low < high){
+      while(data[low] < data[p]) low++;
+      while(data[high]>data[p]) high--;
+      if(low<high){
+        qcount++;
+        int temp = data[high];
+        data[high] = data[low];
+        data[low] = temp;
+        low++; high--;
+      }
     }
+    if(low<j) quicksort (data,i,p);
+    if(i<high) quicksort (data,p,j);
   }
 
 }

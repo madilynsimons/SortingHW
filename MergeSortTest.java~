@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 public class MergeSortTest
@@ -23,7 +22,7 @@ public class MergeSortTest
 
    public static void mergesort(int[] a, int top, int bottom)
    {
-   numcalls++;
+	  numcalls++;
       if (top!=bottom)
       {
          int middle=(top+bottom)/2;

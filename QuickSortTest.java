@@ -22,28 +22,47 @@ public class QuickSortTest{
     System.out.println("Done!");
     System.out.println(qcount+" qcount");
   }
-  
+
+  public static void main(int n){
+    Random gen=new Random(); int[] a=new int[n];
+    int i; for (i=0; i<a.length; i++) a[i]=gen.nextInt(5000)+1;
+    quicksort(a, 0, a.length - 1);
+  }
+
   /**
    * Sorts array data using the quicksort algorithm
   **/
   public static void quicksort (int[] data, int i, int j){
-
-    int p; int low = i; int high = j;
-    p = data[low + (high-low)/2];
-    while(low < high){
-      while(data[low] < p) low++;
-      while(data[high] > p) high--;
-      if(low<=high){
-        qcount++;
-        int temp = data[high];
-        data[high] = data[low];
-        data[low] = temp;
-        low++; high--;
-      }
+    qcount++;
+    int p;
+    if(i<j){
+      p = partition(data, i, j);
+      quicksort (data,i,p);
+      quicksort (data,p+1,j);
     }
-    if(i<high)quicksort (data,i,high);
-    if(j>low)quicksort (data,low,j);
-    
   }
-  
+
+  public static int partition (int[] data, int i, int j){
+    int left, right, pivot;
+
+    left = i; right = j; pivot=data[i];
+    while(left < right){
+      while((left < right) && (pivot <=data[right])) right--;
+      if(left < right){
+        int temp = data[right];
+        data[right]=data[left];
+        data[left]= temp;
+      }
+      while((left < right) && (pivot >= data[left])) left++;
+      if(left < right){
+        int temp = data[right];
+        data[right]=data[left];
+        data[left]= temp;
+      }
+   }
+   data[left]=pivot;
+   return(left);
+ }
+
+
 }

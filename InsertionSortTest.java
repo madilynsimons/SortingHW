@@ -7,10 +7,10 @@
 import java.util.*;
 
 public class InsertionSortTest{
-  
+
   public static int icount = 0;
 
-  public static void main(String[] args){   
+  public static void main(String[] args){
     Random gen=new Random(); int[] a=new int[32];
     int i; for (i=0; i<a.length; i++) a[i]=gen.nextInt(5000)+1;
     System.out.println("Initial array:");
@@ -22,7 +22,13 @@ public class InsertionSortTest{
     System.out.println("Done!");
     System.out.println(icount+" icount");
   }
-  
+
+  public static void main(int n){
+    Random gen=new Random(); int[] a=new int[n];
+    int i; for (i=0; i<a.length; i++) a[i]=gen.nextInt(5000)+1;
+    insertionsort(a);
+  }
+
   public static void insertionsort(int[] data){
     for(int x = 0; x < data.length-1; x++){
       int j = x;
@@ -36,5 +42,5 @@ public class InsertionSortTest{
       }
     }
   }
-  
+
 }

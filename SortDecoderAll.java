@@ -8,7 +8,7 @@ public class SortDecoderAll
 {
  public static void main(String[] args)
  {
-  int i, n=1; entry[] array = new entry[1000000];  
+  int i, n=1; entry[] array = new entry[1000000];
   for (int h=1; h<1000000; h++) array[h]=new entry();
   try
   {
@@ -38,13 +38,15 @@ public class SortDecoderAll
    System.out.println("Input problem with file.");
   }
   n--; System.out.println("n is "+n);
-  mergesort(array, 1, n);
+  //mergesort(array, 1, n);
+  //insertionsort(array, n);
+  quicksort(array, 1, n);
   try
   {
    DataOutputStream outs=new DataOutputStream(new FileOutputStream("decoded"+args[0]));
    for (i=1; i<=n; i++) outs.writeByte(array[i].b);
    outs.close();
-                        System.out.println("The output file is "+"decoded"+args[0]);
+   System.out.println("The output file is "+"decoded"+args[0]);
   }
   catch(FileNotFoundException e)
   {
@@ -55,6 +57,58 @@ public class SortDecoderAll
    System.out.println("Input problem with file.");
   }
  }
+
+/**
+* @author Madilyn Simons
+**/
+  public static void insertionsort(entry[] data, int n){
+    for(int x = 1; x < n; x++){
+      int j = x;
+      int insert = x+1;
+      while(j > 0 && data[insert].key < data[j].key){
+        entry temp = data[j];
+        data[j] = data[insert];
+        data[insert] = temp;
+        j--; insert--;
+      }
+      System.out.println(x +" out of "+n);
+    }
+  }
+
+/**
+* @author Madilyn Simons
+**/
+  public static void quicksort (entry[] data, int i, int j){
+    int p;
+    if(i<j){
+      p = partition(data, i, j);
+      quicksort (data,i,p);
+      quicksort (data,p+1,j);
+    }
+  }
+
+  public static int partition (entry[] data, int i, int j){
+    int left, right;
+    entry pivot;
+
+    left = i; right = j; pivot=data[i];
+    while(left < right){
+      while((left < right) && (pivot.key <=data[right].key)) right--;
+      if(left < right){
+        entry temp = data[right];
+        data[right]=data[left];
+        data[left]= temp;
+      }
+      while((left < right) && (pivot.key >= data[left].key)) left++;
+      if(left < right){
+        entry temp = data[right];
+        data[right]=data[left];
+        data[left]= temp;
+      }
+    }
+    data[left]=pivot;
+    return(left);
+  }
 
  public static void mergesort(entry[] a, int top, int bottom)
  {
@@ -82,4 +136,12 @@ public class SortDecoderAll
   while (t<=last) {s[i]=a[t]; t++; i++;}
   for (i=0; i<s.length; i++) {a[i+top]=s[i];}
  }
+
+ public static class entry
+	{
+		int key; byte b;
+
+		public entry(){}
+	}
+
 }

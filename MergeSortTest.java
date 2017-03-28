@@ -21,6 +21,12 @@ public class MergeSortTest
       System.out.println(" count "+count+" m "+m);
    }
 
+   public static void main(int n){
+     Random gen=new Random(); int[] a=new int[n];
+     int i; for (i=0; i<a.length; i++) a[i]=gen.nextInt(5000)+1;
+     mergesort(a, 0, a.length - 1);
+   }
+
    public static void mergesort(int[] a, int top, int bottom)
    {
    numcalls++;

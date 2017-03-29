@@ -23,6 +23,10 @@ public class QuickSortTest{
     System.out.println(qcount+" qcount");
   }
 
+
+     /**
+     * tests the quicksort method with an array of index n
+     **/
   public static void main(int n){
     Random gen=new Random(); int[] a=new int[n];
     int i; for (i=0; i<a.length; i++) a[i]=gen.nextInt(5000)+1;
@@ -33,7 +37,6 @@ public class QuickSortTest{
    * Sorts array data using the quicksort algorithm
   **/
   public static void quicksort (int[] data, int i, int j){
-    qcount++;
     int p;
     if(i<j){
       p = partition(data, i, j);
@@ -42,18 +45,28 @@ public class QuickSortTest{
     }
   }
 
+  /**
+  * partitions the array between index i and index j
+  * returns index point of the pivot
+  **/
   public static int partition (int[] data, int i, int j){
     int left, right, pivot;
 
     left = i; right = j; pivot=data[i];
     while(left < right){
-      while((left < right) && (pivot <=data[right])) right--;
+      while((left < right) && (pivot <=data[right])){
+        qcount++;
+        right--;
+      }
       if(left < right){
         int temp = data[right];
         data[right]=data[left];
         data[left]= temp;
       }
-      while((left < right) && (pivot >= data[left])) left++;
+      while((left < right) && (pivot >= data[left])){
+        qcount++;
+        left++;
+      }
       if(left < right){
         int temp = data[right];
         data[right]=data[left];

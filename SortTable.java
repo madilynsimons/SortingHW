@@ -1,3 +1,9 @@
+/**
+*  FILE:  SortTable.java
+*  DESCRIPTION:  contains the SortTable class
+*  AUTHOR: Madilyn Simons
+**/
+
 import java.io.*;
 import java.util.*;
 
@@ -19,8 +25,11 @@ public class SortTable{
     int[] sizes = {2048, 4096, 8192, 16384};
 
     String it = "\nInsertion Sort";
+    it += "\nsize| max\tavg\tmin";
     String mt = "\nMerge Sort";
+    mt += "\nsize| max\tavg\tmin";
     String qt = "\nQuick Sort";
+    qt += "\nsize| max\tavg\tmin";
 
     for(int size = 0; size < sizes.length; size++){
 
@@ -44,12 +53,12 @@ public class SortTable{
 
       }
 
-      it += ("\n"+sizes[size]+"\t"+max(insertCounts)+
-        "\t"+average(insertCounts)+"\t"+min(insertCounts));
-      mt += ("\n"+sizes[size]+"\t"+max(mergeCounts)+
-        "\t"+average(mergeCounts)+"\t"+min(mergeCounts));
-      qt += ("\n"+sizes[size]+"\t"+max(quickCounts)+
-        "\t"+average(quickCounts)+"\t"+min(quickCounts));
+      it += ("\n"+sizes[size]+" | "+max(insertCounts)+
+        " | "+average(insertCounts)+" | "+min(insertCounts));
+      mt += ("\n"+sizes[size]+" | "+max(mergeCounts)+
+        " | "+average(mergeCounts)+" | "+min(mergeCounts));
+      qt += ("\n"+sizes[size]+" | "+max(quickCounts)+
+        " | "+average(quickCounts)+" | "+min(quickCounts));
     }
 
     System.out.println(it);
@@ -58,6 +67,9 @@ public class SortTable{
 
   }
 
+  /**
+  *  returns average of the elements in a given arraylist<Integer>
+  **/
   public static int average(ArrayList<Integer> array) {
     int total = 0;
     int nums = 0;
@@ -67,6 +79,9 @@ public class SortTable{
     }return total/nums;
   }
 
+  /**
+  *  returns value of the highest element in a given arraylist<Integer>
+  **/
   public static int max(ArrayList<Integer> array){
     int max = array.get(0);
     for(int x = 1; x<array.size(); x++){
@@ -74,6 +89,10 @@ public class SortTable{
     }return max;
   }
 
+  
+    /**
+    *  returns value of the lowest element in a given arraylist<Integer>
+    **/
   public static int min(ArrayList<Integer> array){
     int min = array.get(0);
     for(int x = 1; x<array.size(); x++){

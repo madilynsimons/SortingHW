@@ -23,12 +23,19 @@ public class InsertionSortTest{
     System.out.println(icount+" icount");
   }
 
+     /**
+     * tests the insertsort method with an array of index n
+     **/
   public static void main(int n){
+    icount = 0;
     Random gen=new Random(); int[] a=new int[n];
     int i; for (i=0; i<a.length; i++) a[i]=gen.nextInt(5000)+1;
     insertionsort(a);
   }
 
+  /**
+  *  sorts an array using the insert sort method
+  **/
   public static void insertionsort(int[] data){
     for(int x = 0; x < data.length-1; x++){
       int j = x;

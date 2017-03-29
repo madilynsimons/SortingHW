@@ -38,8 +38,8 @@ public class SortDecoderAll
    System.out.println("Input problem with file.");
   }
   n--; System.out.println("n is "+n);
-  //mergesort(array, 1, n);
-  //insertionsort(array, n);
+  mergesort(array, 1, n);
+  insertionsort(array, n);
   quicksort(array, 1, n);
   try
   {
@@ -59,7 +59,7 @@ public class SortDecoderAll
  }
 
 /**
-* @author Madilyn Simons
+* sorts array using insert sort algorithm
 **/
   public static void insertionsort(entry[] data, int n){
     for(int x = 1; x < n; x++){
@@ -75,9 +75,9 @@ public class SortDecoderAll
     }
   }
 
-/**
-* @author Madilyn Simons
-**/
+  /**
+  * sorts array using quick sort algorithm
+  **/
   public static void quicksort (entry[] data, int i, int j){
     int p;
     if(i<j){
@@ -110,6 +110,9 @@ public class SortDecoderAll
     return(left);
   }
 
+  /**
+  * sorts array using merge sort algorithm
+  **/
  public static void mergesort(entry[] a, int top, int bottom)
  {
   if (top!=bottom)
